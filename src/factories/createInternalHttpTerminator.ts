@@ -5,17 +5,17 @@ import waitFor from 'p-wait-for';
 import type {
   Duplex,
 } from 'stream';
-import {
-  Logger,
-} from '../Logger';
 import type {
   HttpTerminatorConfigurationInput,
   InternalHttpTerminator,
 } from '../types';
 
-const log = Logger.child({
-  namespace: 'createHttpTerminator',
-});
+const log = {
+  warn: (...args) => {
+    // eslint-disable-next-line no-console
+    console.warn('createHttpTerminator', ...args);
+  },
+};
 
 const configurationDefaults = {
   gracefulTerminationTimeout: 1_000,
